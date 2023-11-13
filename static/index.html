@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSUCI Companion</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="header">
+            <h1>CSUCI Companion</h1>
+            <img src="static/dolphin_transparent.png" alt="Dolphin Logo">
+        </div>
+        <div id="chat-box">
+            <!-- Messages will go here -->
+        </div>
+        <div id="input-area">
+            <input type="text" id="user-input" placeholder="Ask something...">
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // This function formats the bot's response
+        function formatBotResponse(response) {
+            return response
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points, more flexible
+                .replace(/\r\n|\n|\r/g, '<br>'); // New lines, handle all types
+        }
+
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return; // Prevent sending empty messages
+
+            // Add the user message to the chat box
+            var chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `
+                <div class="message user-message">
+                    <span class="message-label">You:</span>
+                    <div class="message-content">${userInput}</div>
+                </div>`;
+
+            // Send the user input to the server
+            fetch('/send_message', {
+                method: 'POST',
+                body: JSON.stringify({ message: userInput }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Format the bot's response
+                    let formattedResponse = formatBotResponse(data.reply);
+
+                    // Add the formatted response to the chat box
+                    chatBox.innerHTML += `
+                    <div class="message bot-message">
+                        <img class="bot-image" src="static/dolphin_transparent.png" alt="Bot">
+                        <span class="message-label">Fin:</span>
+                        <div class="message-content">${formattedResponse}</div>
+                    </div>`;
+                    // Clear the input field
+                    document.getElementById('user-input').value = '';
+                });
+        }
+    </script>
+</body>
+
+</html>
