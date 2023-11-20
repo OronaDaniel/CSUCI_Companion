@@ -3,18 +3,28 @@ import time
 from openai import OpenAI
 from secret import api_key  # Importing API key from secret.py
 from flask_session import Session  # Import session management
+import json
+
+assistant_id = "asst_hTHe8cgWzKJnrYF8Si0OswnZ"
 
 client = OpenAI(api_key=api_key)
 
-# Flask app setup
+def show_json(obj):
+    print(json.dumps(json.loads(obj.model_dump_json()), indent=4))
+
+# Pretty printing helper
+def pretty_print(messages):
+    print("# Messages")
+    for m in messages:
+        print(f"{m.role}: {m.content[0].text.value}")
+    print()
+
+
 app = Flask(__name__)
 
 # Configure the session type
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-
-# Your existing assistant ID
-assistant_id = "asst_hTHe8cgWzKJnrYF8Si0OswnZ"
 
 @app.route('/')
 def index():
@@ -33,36 +43,30 @@ def send_message():
     if thread_id is None:
         return jsonify({'error': 'Session expired or invalid.'}), 400
 
-    # Add a Message to a Thread
-    message = client.beta.threads.messages.create(
-        thread_id=thread_id,
-        role="user",
-        content=user_input
-    )
+    # add message to thread from user input
+    message = client.beta.threads.messages.create(thread_id=thread_id, role="user", content=user_input)
+    show_json(message)
 
-    # Run the Assistant using the existing assistant ID
+    # create the asynchronous run
     run = client.beta.threads.runs.create(
         thread_id=thread_id,
         assistant_id=assistant_id,
-        instructions="Please address the user as Assa Danny. The user has a premium account."
     )
+    show_json(run)
 
-    # Wait for a response from the assistant
+    # sleep every 0.5s to check status
     while True:
-        # Wait for 30 seconds
-        time.sleep(4)
+        time.sleep(0.5)
 
-        # Retrieve the run status
-        run_status = client.beta.threads.runs.retrieve(
-            thread_id=thread_id,
-            run_id=run.id
-        )
+        # retrieve status
+        run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
+        show_json(run)
 
-        # If run is completed, get messages
+        # if status is completed 
         if run_status.status == 'completed':
-            messages = client.beta.threads.messages.list(
-                thread_id=thread_id
-            )
+            messages = client.beta.threads.messages.list(thread_id=thread_id, order="asc", after=message.id)
+            show_json(messages)
+            pretty_print(messages)
 
             # Find the assistant's response and return it
             for msg in messages.data:

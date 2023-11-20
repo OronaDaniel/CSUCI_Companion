@@ -4,28 +4,40 @@
 <head>
     <title>CSUCI Companion</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
+    <div id="sidebar">
+        <!-- Sidebar content goes here -->
+        <h2>CSUCI Companion</h2>
+        <img src="static/dolphin_transparent.png" alt="Dolphin Logo" id="sidebar-logo">
+        <!-- Add other sidebar elements as needed -->
+    </div>
     <div id="chat-container">
-        <div id="header">
-            <h1>CSUCI Companion</h1>
-            <img src="static/dolphin_transparent.png" alt="Dolphin Logo">
-        </div>
         <div id="chat-box">
             <!-- Messages will go here -->
         </div>
         <div id="input-area">
-            <input type="text" id="user-input" placeholder="Ask something...">
+            <input type="file" id="file-upload" hidden>
+            <label for="file-upload" id="upload-button"><i class="fas fa-paperclip"></i></label>
+            <textarea id="user-input" placeholder="Ask something..."></textarea>
             <button id="send-button" onclick="sendMessage()">Send</button>
         </div>
     </div>
 
     <script>
-        // This function formats the bot's response
+        // upload button 
+        document.getElementById('file-upload').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            // Handle the file upload here
+        });
+
+        // formats response
         function formatBotResponse(response) {
             return response
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/\*\*(.*?)\*\*/, '<strong>$1</strong>') // Bold
                 .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points, more flexible
                 .replace(/\r\n|\n|\r/g, '<br>'); // New lines, handle all types
         }
@@ -37,10 +49,13 @@
             // Add the user message to the chat box
             var chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `
-                <div class="message user-message">
-                    <span class="message-label">You:</span>
-                    <div class="message-content">${userInput}</div>
-                </div>`;
+            <div class="message user-message">
+                <div class="message-header">
+                    <span class="message-label">You</span>
+                    <img src="static/user.png" alt="User" class="user-icon">
+                </div>
+                <div class="message-content">${userInput}</div>
+            </div>`;
 
             // Send the user input to the server
             fetch('/send_message', {
@@ -58,8 +73,10 @@
                     // Add the formatted response to the chat box
                     chatBox.innerHTML += `
                     <div class="message bot-message">
-                        <img class="bot-image" src="static/dolphin_transparent.png" alt="Bot">
-                        <span class="message-label">Fin:</span>
+                        <div class="message-header">
+                            <img src="static/dolphin_transparent.png" alt="Bot" class="bot-icon">
+                            <span class="message-label">Fin</span>
+                        </div>
                         <div class="message-content">${formattedResponse}</div>
                     </div>`;
                     // Clear the input field
