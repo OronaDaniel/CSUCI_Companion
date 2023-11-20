@@ -190,3 +190,20 @@ body {
 #upload-button:hover {
     color: #e60000;
 }
+
+
+#reset-button {
+    background: #ff0000; /* Red background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 15px; /* Space above the button */
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#reset-button:hover {
+    background: #e60000; /* Slightly darker shade of red for hover effect */
+}

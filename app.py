@@ -19,7 +19,6 @@ def pretty_print(messages):
         print(f"{m.role}: {m.content[0].text.value}")
     print()
 
-
 app = Flask(__name__)
 
 # Configure the session type
@@ -73,6 +72,18 @@ def send_message():
                 if msg.role == 'assistant':
                     content = msg.content[0].text.value
                     return jsonify({'reply': content})
+
+@app.route('/reset_conversation', methods=['POST'])
+def reset_conversation():
+    # Clear any existing session data
+    session.clear()
+
+    # Create a new Thread for a fresh start
+    thread = client.beta.threads.create()
+    session['thread_id'] = thread.id
+
+    # Return a confirmation message
+    return jsonify({'message': 'Conversation has been reset.'})
 
 if __name__ == '__main__':
     app.run(debug=True)
