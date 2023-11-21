@@ -6,6 +6,30 @@
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        #example-prompts {
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #example-prompts h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        #example-prompts ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #example-prompts li {
+            cursor: pointer;
+            color: #007bff;
+            margin: 5px 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +43,17 @@
         <div id="chat-box">
             <!-- Messages will go here -->
         </div>
+
+        <!-- Example Prompts -->
+        <div id="example-prompts" class="prompt-container">
+            <button onclick="setPrompt('What is the weather like today?')" class="prompt-button">What is the weather
+                like today?</button>
+            <button onclick="setPrompt('Tell me about CSUCI')" class="prompt-button">Tell me about CSUCI</button>
+            <button onclick="setPrompt('How can I improve my study habits?')" class="prompt-button">How can I improve my
+                study habits?</button>
+            <button onclick="setPrompt('Show me the campus map')" class="prompt-button">Show me the campus map</button>
+        </div>
+
         <div id="input-area">
             <input type="file" id="file-upload" hidden>
             <label for="file-upload" id="upload-button"><i class="fas fa-paperclip"></i></label>
@@ -28,6 +63,12 @@
     </div>
 
     <script>
+        // Function to set the prompt in the user input field and hide the example prompts
+        function setPrompt(promptText) {
+            document.getElementById('user-input').value = promptText;
+            document.getElementById('example-prompts').style.display = 'none';
+        }
+
         // upload button 
         document.getElementById('file-upload').addEventListener('change', function (event) {
             var file = event.target.files[0];
@@ -46,7 +87,7 @@
             var userInput = document.getElementById('user-input').value;
             if (!userInput.trim()) return; // Prevent sending empty messages
 
-            // Add the user message to the chat box
+            // Add the user message to the chat bubble
             var chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `
             <div class="message user-message">

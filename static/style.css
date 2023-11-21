@@ -36,8 +36,12 @@ body {
     height: calc(100vh - 60px);
     /*border: 1px solid #ccc;*/
     background: #d3d4d5;
+    background-color: #d3d4d5;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    height: 92%;
+    /* Adjust the height as needed */
 }
 
 #chat-box {
@@ -189,4 +193,33 @@ body {
 
 #upload-button:hover {
     color: #e60000;
+}
+
+.prompt-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+    background-color: #d3d4d5;
+    /* Match the chat-container background */
+    /* Adjust padding to control the width */
+}
+
+.prompt-button {
+    background-color: #d3d4d5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
