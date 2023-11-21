@@ -223,3 +223,23 @@ body {
     background-color: #e0e0e0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
+
+#reset-button {
+    background: #af1616;
+    /* Red background */
+    color: white;
+    /* White text */
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    /* Space above the button */
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#reset-button:hover {
+    background: #e60000;
+    /* Slightly darker shade of red for hover effect */
+}

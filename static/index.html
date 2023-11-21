@@ -37,6 +37,11 @@
         <!-- Sidebar content goes here -->
         <h2>CSUCI Companion</h2>
         <img src="static/dolphin_transparent.png" alt="Dolphin Logo" id="sidebar-logo">
+        <p>Hi, I'm Fin! I'm here to help you with any questions you have about CSUCI.</p>
+        
+        <!-- Reset button -->
+        <button id="reset-button">Reset Chat</button>
+        
         <!-- Add other sidebar elements as needed -->
     </div>
     <div id="chat-container">
@@ -124,6 +129,20 @@
                     document.getElementById('user-input').value = '';
                 });
         }
+
+        // Reset button event listener
+        document.getElementById('reset-button').addEventListener('click', function() {
+            fetch('/reset_conversation', { method: "POST" })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Conversation reset:", data.message);
+                // Clear the chat box
+                document.getElementById('chat-box').innerHTML = '';
+            })
+            .catch(error => {
+                console.error('Error resetting conversation:', error);
+            });
+        });
     </script>
 </body>
 
