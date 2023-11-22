@@ -30,6 +30,7 @@
             margin: 5px 0;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.0.0/spin.min.js"></script>
 </head>
 
 <body>
@@ -39,10 +40,10 @@
         <p id="CSUCI Companion">CSUCI Companion</p>
         <img src="static/dolphin_transparent.png" alt="Dolphin Logo" id="sidebar-logo">
         <p>Hi, I'm Fin! I'm here to help you with any questions you have about CSUCI.</p>
-        
+
         <!-- Reset button -->
         <button id="reset-button">Reset Chat</button>
-        
+
         <!-- Add other sidebar elements as needed -->
     </div>
     <div id="chat-container">
@@ -52,9 +53,14 @@
 
         <!-- Example Prompts -->
         <div id="example-prompts" class="prompt-container">
-            <button onclick="setPrompt('Let\'s play a trivia game about CSUCI history. You ask the questions! (Multiple Choice Format)')" class="prompt-button">Play CSUCI History Trivia</button>
-            <button onclick="setPrompt('Create a semester schedule for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')" class="prompt-button">Build me a class schedule</button>
-            <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What events are scheduled at CSUCI this month?</button>
+            <button
+                onclick="setPrompt('Let\'s play a trivia game about CSUCI history. You ask the questions! (Multiple Choice Format)')"
+                class="prompt-button">Play CSUCI History Trivia</button>
+            <button
+                onclick="setPrompt('Create a semester schedule for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')"
+                class="prompt-button">Build me a class schedule</button>
+            <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What
+                events are scheduled at CSUCI this month?</button>
             <button onclick="setPrompt('Tell me about CSUCI')" class="prompt-button">Tell me about CSUCI</button>
         </div>
 
@@ -79,12 +85,29 @@
             // Handle the file upload here
         });
 
-        // formats response
         function formatBotResponse(response) {
             return response
-                .replace(/\*\*(.*?)\*\*/, '<strong>$1</strong>') // Bold
-                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points, more flexible
-                .replace(/\r\n|\n|\r/g, '<br>'); // New lines, handle all types
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold 
+                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points
+                .replace(/\r\n|\n|\r/g, '<br>'); // New line 
+        }
+
+        function addLoadingIndicator() {
+            var chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <div class="loader"></div> <!-- Add the spinner here -->
+                    </div>
+                </div>`;
+        }
+
+
+        function removeLoadingIndicator() {
+            var loadingMessages = document.querySelectorAll('.bot-message');
+            loadingMessages.forEach(msg => {
+                msg.remove();
+            });
         }
 
         function sendMessage() {
@@ -102,7 +125,8 @@
                 <div class="message-content">${userInput}</div>
             </div>`;
 
-            // Send the user input to the server
+            addLoadingIndicator();  // Add the loading indicator
+
             fetch('/send_message', {
                 method: 'POST',
                 body: JSON.stringify({ message: userInput }),
@@ -113,8 +137,8 @@
                 .then(response => response.json())
                 .then(data => {
                     // Format the bot's response
+                    removeLoadingIndicator(); // Remove the loading indicator
                     let formattedResponse = formatBotResponse(data.reply);
-
                     // Add the formatted response to the chat box
                     chatBox.innerHTML += `
                     <div class="message bot-message">
@@ -130,17 +154,17 @@
         }
 
         // Reset button event listener
-        document.getElementById('reset-button').addEventListener('click', function() {
+        document.getElementById('reset-button').addEventListener('click', function () {
             fetch('/reset_conversation', { method: "POST" })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Conversation reset:", data.message);
-                // Clear the chat box
-                document.getElementById('chat-box').innerHTML = '';
-            })
-            .catch(error => {
-                console.error('Error resetting conversation:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Conversation reset:", data.message);
+                    // Clear the chat box
+                    document.getElementById('chat-box').innerHTML = '';
+                })
+                .catch(error => {
+                    console.error('Error resetting conversation:', error);
+                });
         });
     </script>
 </body>
