@@ -95,18 +95,17 @@
         function addLoadingIndicator() {
             var chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `
-                <div class="message bot-message">
+                <div class="message bot-message loading-spinner"> <!-- Add class here -->
                     <div class="message-content">
-                        <div class="loader"></div> <!-- Add the spinner here -->
+                        <div class="loader"></div>
                     </div>
                 </div>`;
         }
 
-
         function removeLoadingIndicator() {
-            var loadingMessages = document.querySelectorAll('.bot-message');
-            loadingMessages.forEach(msg => {
-                msg.remove();
+            var loadingSpinners = document.querySelectorAll('.loading-spinner'); // Targeting the specific class
+            loadingSpinners.forEach(spinner => {
+                spinner.remove();
             });
         }
 
