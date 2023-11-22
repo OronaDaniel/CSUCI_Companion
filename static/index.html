@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <title>CSUCI Companion</title>
+    <title>Fin</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         #example-prompts {
             padding: 10px;
-            background-color: #f0f0f0;
+            background-color: #d3d4d5;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -35,7 +35,8 @@
 <body>
     <div id="sidebar">
         <!-- Sidebar content goes here -->
-        <h2>CSUCI Companion</h2>
+        <h2>Fin</h2>
+        <p id="CSUCI Companion">CSUCI Companion</p>
         <img src="static/dolphin_transparent.png" alt="Dolphin Logo" id="sidebar-logo">
         <p>Hi, I'm Fin! I'm here to help you with any questions you have about CSUCI.</p>
         
@@ -51,11 +52,10 @@
 
         <!-- Example Prompts -->
         <div id="example-prompts" class="prompt-container">
+            <button onclick="setPrompt('Let\'s play a trivia game about CSUCI history. You ask the questions! (Multiple Choice Format)')" class="prompt-button">Play CSUCI History Trivia</button>
+            <button onclick="setPrompt('Create a semester schedule for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')" class="prompt-button">Build me a class schedule</button>
             <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What events are scheduled at CSUCI this month?</button>
             <button onclick="setPrompt('Tell me about CSUCI')" class="prompt-button">Tell me about CSUCI</button>
-            <button onclick="setPrompt('How can I improve my study habits?')" class="prompt-button">How can I improve my
-                study habits?</button>
-            <button onclick="setPrompt('Show me the campus map')" class="prompt-button">Show me the campus map</button>
         </div>
 
         <div id="input-area">

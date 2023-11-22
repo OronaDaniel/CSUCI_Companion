@@ -24,6 +24,16 @@ body {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#sidebar h2 {
+    color: #c00; /* CSUCI Red Color */
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px; /* Larger font size for impact */
+    letter-spacing: 1px; /* Adds spacing between letters for a modern feel */
+    margin-bottom: 15px; /* Adds more space below the title */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
 #sidebar-logo {
     width: 60%;
     margin-bottom: 10px;
@@ -164,7 +174,7 @@ body {
 }
 
 #send-button {
-    background: #af1616;
+    background: #ff0000;
     color: white;
     border: none;
     border-radius: 15px;
@@ -175,7 +185,7 @@ body {
 }
 
 #send-button:hover {
-    background: #e60000;
+    background: #af1616;
 }
 
 #upload-button {
@@ -207,8 +217,8 @@ body {
 }
 
 .prompt-button {
-    background-color: #d3d4d5;
-    color: #333;
+    background-color: #ff0000;
+    color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px 15px;
@@ -220,12 +230,12 @@ body {
 }
 
 .prompt-button:hover {
-    background-color: #e0e0e0;
+    background-color: #af1616;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 #reset-button {
-    background: #af1616;
+    background: #ff0000;
     /* Red background */
     color: white;
     /* White text */
@@ -240,6 +250,6 @@ body {
 }
 
 #reset-button:hover {
-    background: #e60000;
+    background: #af1616;
     /* Slightly darker shade of red for hover effect */
 }
