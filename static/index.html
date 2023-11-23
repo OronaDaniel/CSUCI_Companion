@@ -2,35 +2,11 @@
 <html>
 
 <head>
-    <title>Fin</title>
+    <title>CSUCI Companion</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        #example-prompts {
-            padding: 10px;
-            background-color: #d3d4d5;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        #example-prompts h3 {
-            margin: 0;
-            font-size: 1.2em;
-        }
-
-        #example-prompts ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        #example-prompts li {
-            cursor: pointer;
-            color: #007bff;
-            margin: 5px 0;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.0.0/spin.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
 
 <body>
@@ -43,54 +19,31 @@
 
         <!-- Reset button -->
         <button id="reset-button">Reset Chat</button>
-
-        <!-- Add other sidebar elements as needed -->
     </div>
     <div id="chat-container">
         <div id="chat-box">
-            <!-- Messages will go here -->
+            <!-- Chat bubbles -->
         </div>
-
         <!-- Example Prompts -->
         <div id="example-prompts" class="prompt-container">
             <button
                 onclick="setPrompt('Let\'s play a trivia game about CSUCI history. You ask the questions! (Multiple Choice Format)')"
                 class="prompt-button">Play CSUCI History Trivia</button>
             <button
-                onclick="setPrompt('Create a semester schedule for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')"
+                onclick="setPrompt('Use course data, file id: file-j2tgmw7cPROJdZLME9HWGKwO to create schedule for this semester for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')"
                 class="prompt-button">Build me a class schedule</button>
             <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What
                 events are scheduled at CSUCI this month?</button>
             <button onclick="setPrompt('Tell me about CSUCI')" class="prompt-button">Tell me about CSUCI</button>
         </div>
-
+        <!-- Text Input -->
         <div id="input-area">
-            <input type="file" id="file-upload" hidden>
-            <label for="file-upload" id="upload-button"><i class="fas fa-paperclip"></i></label>
             <textarea id="user-input" placeholder="Ask something..."></textarea>
             <button id="send-button" onclick="sendMessage()">Send</button>
         </div>
     </div>
 
     <script>
-        // Function to set the prompt in the user input field and hide the example prompts
-        function setPrompt(promptText) {
-            document.getElementById('user-input').value = promptText;
-            document.getElementById('example-prompts').style.display = 'none';
-        }
-
-        // upload button 
-        document.getElementById('file-upload').addEventListener('change', function (event) {
-            var file = event.target.files[0];
-            // Handle the file upload here
-        });
-
-        function formatBotResponse(response) {
-            return response
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold 
-                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points
-                .replace(/\r\n|\n|\r/g, '<br>'); // New line 
-        }
 
         function addLoadingIndicator() {
             var chatBox = document.getElementById('chat-box');
@@ -103,29 +56,65 @@
         }
 
         function removeLoadingIndicator() {
-            var loadingSpinners = document.querySelectorAll('.loading-spinner'); // Targeting the specific class
+            var loadingSpinners = document.querySelectorAll('.loading-spinner');
             loadingSpinners.forEach(spinner => {
                 spinner.remove();
             });
+        }
+
+        // Function to set the prompt in the user input field and hide the example prompts
+        function setPrompt(promptText) {
+            document.getElementById('user-input').value = promptText;
+            document.getElementById('example-prompts').style.display = 'none';
+        }
+
+        function formatBotResponse(response) {
+            return response
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points
+                .replace(/\r\n|\n|\r/g, '<br>'); // New lines
         }
 
         function sendMessage() {
             var userInput = document.getElementById('user-input').value;
             if (!userInput.trim()) return; // Prevent sending empty messages
 
-            // Add the user message to the chat bubble
+            // Hide the example prompts
+            document.getElementById('example-prompts').style.display = 'none';
+
+
+            // Add the user chat bubble to the chat box
             var chatBox = document.getElementById('chat-box');
+
+            // Create a container for the label and icon
+            var userLabelContainer = document.createElement('div');
+            userLabelContainer.className = 'user-label-container';
+
+            // Create a new div for the 'You' label
+            var youLabel = document.createElement('div');
+            youLabel.className = 'you-label';
+            youLabel.textContent = 'You';
+
+            var userIcon = document.createElement('img');
+            userIcon.src = 'static/user.png';
+            userIcon.alt = 'User Icon';
+            userIcon.className = 'user-icon';
+
+            // Append the label and icon to the container
+            userLabelContainer.appendChild(youLabel);
+            userLabelContainer.appendChild(userIcon);
+
+            // Append the container to the chat box
+            chatBox.appendChild(userLabelContainer);
+
             chatBox.innerHTML += `
-            <div class="message user-message">
-                <div class="message-header">
-                    <span class="message-label">You</span>
-                    <img src="static/user.png" alt="User" class="user-icon">
-                </div>
-                <div class="message-content">${userInput}</div>
-            </div>`;
+                <div class="message user-message">
+                    <div class="message-content">${userInput}</div>
+                </div>`;
 
-            addLoadingIndicator();  // Add the loading indicator
-
+            document.getElementById('user-input').value = '';
+            addLoadingIndicator();
+            // Send the user input to the server
             fetch('/send_message', {
                 method: 'POST',
                 body: JSON.stringify({ message: userInput }),
@@ -133,24 +122,65 @@
                     'Content-Type': 'application/json'
                 }
             })
+                // wait for server response 
                 .then(response => response.json())
                 .then(data => {
-                    // Format the bot's response
-                    removeLoadingIndicator(); // Remove the loading indicator
                     let formattedResponse = formatBotResponse(data.reply);
-                    // Add the formatted response to the chat box
+                    removeLoadingIndicator();
+                    // Create a container for the label and icon
+                    var botLabelContainer = document.createElement('div');
+                    botLabelContainer.className = 'bot-label-container';
+
+                    // Create the bot icon
+                    var botIcon = document.createElement('img');
+                    botIcon.src = 'static/dolphin_transparent.png'; // Adjust the path as needed
+                    botIcon.alt = 'Bot';
+                    botIcon.className = 'bot-icon';
+
+                    // Create the 'Fin' label
+                    var finLabel = document.createElement('span');
+                    finLabel.className = 'message-label';
+                    finLabel.textContent = 'Fin';
+
+                    // Append the icon and label to the container
+                    botLabelContainer.appendChild(botIcon);
+                    botLabelContainer.appendChild(finLabel);
+
+                    // Append the label container to the chat box
+                    chatBox.appendChild(botLabelContainer);
+
+                    // Append the bot message
                     chatBox.innerHTML += `
-                    <div class="message bot-message">
-                        <div class="message-header">
-                            <img src="static/dolphin_transparent.png" alt="Bot" class="bot-icon">
-                            <span class="message-label">Fin</span>
-                        </div>
-                        <div class="message-content">${formattedResponse}</div>
-                    </div>`;
-                    // Clear the input field
-                    document.getElementById('user-input').value = '';
+                        <div class="message bot-message">
+                            <div class="message-content">${formattedResponse}</div>
+                        </div>`;
+                    // Add the formatted response to the chat box
                 });
         }
+
+        // New script for dynamically resizing the textarea
+        document.getElementById('user-input').addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            if (this.value === '') {
+                document.getElementById('example-prompts').style.display = 'block';
+                setTimeout(() => document.getElementById('example-prompts').style.opacity = '1', 0);
+            }
+        });
+
+        document.getElementById('user-input').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                var userInput = this.value; // Get the current value of the input field
+                if (!userInput.trim()) {
+                    event.preventDefault(); // Prevent default action (new line)
+                    return; // Prevent sending empty messages
+                }
+                event.preventDefault(); // Prevent the default action (new line)
+                sendMessage();
+            }
+        });
+
+
 
         // Reset button event listener
         document.getElementById('reset-button').addEventListener('click', function () {
