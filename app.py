@@ -48,7 +48,7 @@ def send_message():
 
     # Wait for a response from the assistant
     while True:
-        time.sleep(4)
+        time.sleep(3)
 
         # Retrieve the run status
         run_status = client.beta.threads.runs.retrieve(

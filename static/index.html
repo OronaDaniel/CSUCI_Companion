@@ -12,13 +12,15 @@
 <body>
     <div id="sidebar">
         <!-- Sidebar content goes here -->
-        <h2>Fin</h2>
+        <h2>Phin</h2>
         <p id="CSUCI Companion">CSUCI Companion</p>
         <img src="static/dolphin_transparent.png" alt="Dolphin Logo" id="sidebar-logo">
-        <p>Hi, I'm Fin! I'm here to help you with any questions you have about CSUCI.</p>
+        <p>Hi, I'm Phin! I'm here to help you with any questions you have about CSUCI.</p>
 
         <!-- Reset button -->
         <button id="reset-button">Reset Chat</button>
+        <div class="flex-spacer"></div>
+        <!--<p id="bottom-text">Capstone made by Matilda and Daniel Orona</p>-->
     </div>
     <div id="chat-container">
         <div id="chat-box">
@@ -33,7 +35,7 @@
                 onclick="setPrompt('Use course data, file id: file-j2tgmw7cPROJdZLME9HWGKwO to create schedule for this semester for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')"
                 class="prompt-button">Build me a class schedule</button>
             <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What
-                events are scheduled at CSUCI this month?</button>
+                events are happening at CSUCI this month?</button>
             <button onclick="setPrompt('Tell me about CSUCI')" class="prompt-button">Tell me about CSUCI</button>
         </div>
         <!-- Text Input -->
@@ -71,8 +73,11 @@
         function formatBotResponse(response) {
             return response
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-                .replace(/(\s|^)- /g, '$1<br>&bull; ') // Bullet points
+                .replace(/(?:\r\n|\n|\r|^)(?<!\d)- (?!:)/g, '$1<br>&bull; ') // Bullet points, avoiding times
                 .replace(/\r\n|\n|\r/g, '<br>'); // New lines
+
+
+
         }
 
         function sendMessage() {
@@ -140,7 +145,7 @@
                     // Create the 'Fin' label
                     var finLabel = document.createElement('span');
                     finLabel.className = 'message-label';
-                    finLabel.textContent = 'Fin';
+                    finLabel.textContent = 'Phin';
 
                     // Append the icon and label to the container
                     botLabelContainer.appendChild(botIcon);

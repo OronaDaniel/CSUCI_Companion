@@ -40,6 +40,18 @@ body {
     /* Subtle shadow for depth */
 }
 
+#bottom-text {
+    color: #b0b3b5;
+    margin-top: auto;
+    /* Pushes to the bottom */
+    padding: 20px;
+    /* Adjusted padding */
+}
+
+.flex-spacer {
+    flex-grow: 1;
+}
+
 #sidebar-logo {
     width: 60%;
     margin-bottom: 10px;
@@ -56,7 +68,7 @@ body {
     justify-content: flex-end;
     height: 96%;
     /* Adjust the height as needed */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
 }
 
 #chat-box {
@@ -64,7 +76,7 @@ body {
     overflow: auto;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
     margin-right: 30px;
 }
 
@@ -73,7 +85,7 @@ body {
     margin-bottom: 10px;
     line-height: 1.4;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
 }
@@ -164,7 +176,7 @@ body {
     margin-bottom: 10px;
     margin-right: 28px;
     margin-left: 26px;
-    padding: 20px 10px;
+    padding: 10px 15px;
     /* Increase top and bottom padding, reduce left and right */
     background-color: #d3d4d5;
     /* Match the chat-container background */
@@ -173,7 +185,7 @@ body {
 .prompt-button {
     background-color: #ff0000;
     color: #ffffff;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 8px;
     padding: 10px 15px;
     /*Sets padding inside the buttons.*/
@@ -196,7 +208,7 @@ body {
 #example-prompts {
     padding: 10px;
     /* Adds padding inside the #example-prompts element.*/
-    background-color: #d8d9db;
+    background-color: #d3d4d5;
     border-radius: 10px;
     margin-bottom: 10px;
 }
