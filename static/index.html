@@ -71,13 +71,11 @@
         }
 
         function formatBotResponse(response) {
+            // First, handle bold text
             return response
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-                .replace(/(?:\r\n|\n|\r|^)(?<!\d)- (?!:)/g, '$1<br>&bull; ') // Bullet points, avoiding times
+                .replace(/(?:\r\n|\n|\r|^)- /g, '<br>&bull; ') // Bullet points, avoiding times
                 .replace(/\r\n|\n|\r/g, '<br>'); // New lines
-
-
-
         }
 
         function sendMessage() {

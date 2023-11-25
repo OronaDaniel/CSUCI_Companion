@@ -1,10 +1,15 @@
+from sys import displayhook
 from flask import Flask, request, jsonify, session
 import time
 from openai import OpenAI
 from secret import api_key  # Importing API key from secret.py
 from flask_session import Session  # Import session management
+import json
 
 client = OpenAI(api_key=api_key)
+
+def show_json(obj):
+    displayhook(json.loads(obj.model_dump_json()))
 
 # Flask app setup
 app = Flask(__name__)
@@ -61,6 +66,7 @@ def send_message():
             messages = client.beta.threads.messages.list(
                 thread_id=thread_id
             )
+            show_json(messages)
 
             # Find the assistant's response and return it
             for msg in messages.data:
