@@ -32,7 +32,7 @@
                 onclick="setPrompt('Let\'s play a trivia game about CSUCI history. You ask the questions! (Multiple Choice Format)')"
                 class="prompt-button">Play CSUCI History Trivia</button>
             <button
-                onclick="setPrompt('Use course data, file id: file-hY7pAxWnjRAUWEkf7hysj74F to create schedule for this semester for a Computer Science major, including a mix of core programming courses, electives in advanced topics, and general education requirements.')"
+                onclick="setPrompt('Use file id: file-hY7pAxWnjRAUWEkf7hysj74F to create schedule for this semester for a Computer Science major, including a mix of computer science classes.')"
                 class="prompt-button">Build me a class schedule</button>
             <button onclick="setPrompt('What events are scheduled at CSUCI this month?')" class="prompt-button">What
                 events are happening at CSUCI this month?</button>
@@ -71,12 +71,41 @@
         }
 
         function formatBotResponse(response) {
-            // First, handle bold text
-            return response
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-                .replace(/(?:\r\n|\n|\r|^)- /g, '<br>&bull; ') // Bullet points, avoiding times
-                .replace(/\r\n|\n|\r/g, '<br>'); // New lines
+            // First, split the response into separate lines
+            const lines = response.split(/\r\n|\n|\r/);
+
+            // Process each line, converting bullet points to list items
+            const processedLines = lines.map(line => {
+                if (line.trim().startsWith('- ')) { // Detects bullet points
+                    return '<li>' + line.trim().substring(2) + '</li>'; // Converts to list item
+                } else {
+                    return line;
+                }
+            });
+
+            // Join the processed lines back into a single string
+            let processedResponse = processedLines.join('<br>');
+
+            // Wrap list items in <ul> tags
+            processedResponse = processedResponse.replace(/<li>(.*?)<\/li>/g, '<ul><li>$1</li></ul>');
+
+            // Merge adjacent lists
+            processedResponse = processedResponse.replace(/<\/ul><br><ul>/g, '');
+
+            // Replace markdown bold syntax with HTML <strong> tags
+            processedResponse = processedResponse.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            return processedResponse;
         }
+
+
+
+        // function formatBotResponse(response) {
+        //     return response
+        //         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+        //         .replace(/(?:\r\n|\n|\r|^)- /g, '<br>&bull; ') // Bullet points, avoiding times
+        //         .replace(/\r\n|\n|\r/g, '<br>'); // New lines
+        // }
 
         function sendMessage() {
             var userInput = document.getElementById('user-input').value;
