@@ -18,9 +18,7 @@ file_handler = RotatingFileHandler('myapp.log', maxBytes=10000, backupCount=5)
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
 
-# Add file handler to logger
 logger.addHandler(file_handler)
-
 
 client = OpenAI(api_key=api_key)
 
@@ -85,6 +83,7 @@ def send_message():
             duration = end_time - start_time
 
             messages = client.beta.threads.messages.list(thread_id=thread_id)
+            show_json(messages)
 
             # Find the assistant's response and return it
             for msg in messages.data:
