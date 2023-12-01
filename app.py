@@ -5,6 +5,21 @@ from openai import OpenAI
 from secret import api_key  # Importing API key from secret.py
 from flask_session import Session  # Import session management
 import json
+import logging
+from logging.handlers import RotatingFileHandler
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger('MyAppLogger')
+
+# Set up a file handler with rotation
+file_handler = RotatingFileHandler('myapp.log', maxBytes=10000, backupCount=5)
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
+
+# Add file handler to logger
+logger.addHandler(file_handler)
+
 
 client = OpenAI(api_key=api_key)
 
@@ -38,6 +53,9 @@ def send_message():
     if thread_id is None:
         return jsonify({'error': 'Session expired or invalid.'}), 400
 
+    # Start timer for logging API response time 
+    start_time = time.time()
+
     # Add a Message to a Thread
     message = client.beta.threads.messages.create(
         thread_id=thread_id,
@@ -53,7 +71,7 @@ def send_message():
 
     # Wait for a response from the assistant
     while True:
-        time.sleep(3)
+        time.sleep(2)
 
         # Retrieve the run status
         run_status = client.beta.threads.runs.retrieve(
@@ -63,15 +81,19 @@ def send_message():
 
         # If run is completed, get messages
         if run_status.status == 'completed':
-            messages = client.beta.threads.messages.list(
-                thread_id=thread_id
-            )
-            show_json(messages)
+            
+            end_time = time.time()
+            duration = end_time - start_time
+
+            messages = client.beta.threads.messages.list(thread_id=thread_id)
 
             # Find the assistant's response and return it
             for msg in messages.data:
                 if msg.role == 'assistant':
                     content = msg.content[0].text.value
+
+                    # Log the duration of the API call
+                    logger.info(f"User input: {user_input}\nResponse: {content}\nDuration: {duration:.2f} seconds\n")
                     return jsonify({'reply': content})
                 
 @app.route('/reset_conversation', methods=['POST'])
@@ -82,6 +104,8 @@ def reset_conversation():
     # Create a new Thread for a fresh start
     thread = client.beta.threads.create()
     session['thread_id'] = thread.id
+
+    logger.info("Conversation reset\n")
 
     # Return a confirmation message
     return jsonify({'message': 'Conversation has been reset.'})                
