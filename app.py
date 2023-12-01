@@ -2,8 +2,9 @@ from sys import displayhook
 from flask import Flask, request, jsonify, session
 import time
 from openai import OpenAI
-from secret import api_key  # Importing API key from secret.py
-from flask_session import Session  # Import session management
+from secret import api_key 
+from secret import api_key, assistant_id
+from flask_session import Session  
 import json
 import logging
 from logging.handlers import RotatingFileHandler
@@ -33,8 +34,6 @@ app = Flask(__name__)
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Your existing assistant ID
-assistant_id = "asst_hTHe8cgWzKJnrYF8Si0OswnZ"
 
 @app.route('/')
 def index():

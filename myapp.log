@@ -1,87 +1,55 @@
-2023-11-30 21:32:39,720 - User input: Tell me two Computer Science classes that are on Monday's and Wednesday's, Response: There are two Computer Science classes that are on Mondays and Wednesdays:
+2023-11-30 22:42:47,948 - User input: I like to sleep in. Tell me some computer sciences classes available after 11:00AM that i can enroll in. 
+Response: Here are some computer science courses at CSUCI that are available after 11:00 AM:
 
-1. COMP 150, Object-Oriented Programming, which is held on Mondays and Wednesdays from 12:00 PM to 1:50 PM in Sierra Hall 1232. The instructor for this class is Juan Rios【11†source】.
+1. COMP 151, Data Structures & Pro Design
+   - LEC, Section 02, Class Number 1671
+   - Tuesdays from 3:00 PM to 5:50 PM
+   - Location: Sierra Hall 1232
+   - Instructor: Eric Gentry
+   - Units: 4.00
 
-2. COMP 232, Programming Languages, Section 02 has a lecture (LEC) scheduled on Mondays from 12:00 PM to 1:50 PM in Sierra Hall 1242, instructed by John Dempsey. Additionally, there's a lab (LAB) section 2L for the same course on Wednesdays from 12:00 PM to 2:50 PM【15†source】., Duration: 25.42 seconds
-2023-11-30 21:39:00,442 - Conversation reset
-2023-11-30 21:39:36,513 - User input: Tell me two Computer Science classes that are on Tuesdays and Thursdays
-Response: Two Computer Science classes that are on Tuesdays and Thursdays for CSUCI students are:
+2. COMP 151, Data Structures & Pro Design (Lab Sections)
+   - LAB, Section 1L, Class Number 1673
+   - Thursdays from 12:00 PM to 2:50 PM
+   - LAB, Section 2L, Class Number 1677
+   - Thursdays from 3:00 PM to 5:50 PM
+   - Location: Sierra Hall 1232
+   - Instructor: Eric Gentry
+   - Units: 4.00
 
-1. COMP 362, Operating Systems - Section 01, which is held on Thursdays from 12:00 PM to 2:50 PM at Sierra Hall 1242, instructed by Kevin Scrivnor【13†source】.
-2. COMP 362, Operating Systems - Section 02, which is held on Thursdays from 3:00 PM to 5:50 PM, also at Sierra Hall 1242, and also instructed by Kevin Scrivnor【13†source】.
-Duration: 19.17 seconds
-2023-11-30 21:45:17,072 - Conversation reset
+3. COMP 232, Programming Languages
+   - LEC, Section 01, Class Number 1708
+   - Tuesdays from 12:00 PM to 1:50 PM
+   - Online
+   - Instructor: Michael Soltys
+   - Units: 3.00
+   - LEC, Section 02, Class Number 1709
+   - Mondays from 12:00 PM to 1:50 PM
+   - Location: Sierra Hall 1242
+   - Instructor: John Dempsey
+   - Units: 3.00
 
-2023-11-30 21:46:17,763 - User input: Tell me two Computer Science classes that are held on both Monday's and Wednesday's
-Response: Two Computer Science classes which are held on both Mondays and Wednesdays are:
+4. COMP 232, Programming Languages (Lab Section)
+   - LAB, Section 2L, Class Number 1711
+   - Wednesdays from 12:00 PM to 2:50 PM
+   - Location: Sierra Hall 1242
+   - Instructor: John Dempsey
+   - Units: 3.00
 
-1. COMP 150, Object-Oriented Programming, scheduled from 12:00 PM to 1:50 PM【11†source】.
-   
-2. COMP 232, Programming Languages, with section 02 having lectures on Mondays from 12:00 PM to 1:50 PM and a related lab section 2L on Wednesdays from 12:00 PM to 2:50 PM【15†source】.
-Duration: 17.37 seconds
+5. COMP 262, Computer Organization/Architecture
+   - LEC, Section 02, Class Number 1713
+   - Tuesdays from 12:00 PM to 1:50 PM
+   - Location: Sierra Hall 1432
+   - Instructor: Kurt Zierhut
+   - Units: 3.00
 
-2023-11-30 21:47:39,434 - Conversation reset
+6. COMP 262, Computer Organization/Architecture (Lab Section)
+   - LAB, Section 2L, Class Number 1717
+   - Thursdays from 12:00 PM to 2:50 PM
+   - Location: Sierra Hall 1432
+   - Instructor: Kurt Zierhut
+   - Units: 3.00
 
-2023-11-30 21:48:08,423 - User input: Tell me two Computer Science classes that are on Tuesdays and Thursdays
-Response: Two Computer Science classes that are on Tuesdays and Thursdays are:
-
-1. COMP 151, Data Struct&Pro Design, taught by Eric Gentry. Section 1 is on Tuesdays from 12:00 PM to 2:50 PM【11†source】 and Section 02 is on Tuesdays from 3:00 PM to 5:50 PM【11†source】.
-
-2. COMP 232, Programming Languages, Section 01 is on Tuesdays from 12:00 PM to 1:50 PM【12†source】. 
-
-(Note: The second class, COMP 232, only has a listing for Tuesday. There might be labs or other sessions for this class on Thursdays, but I would need to look further into the document to confirm. If you require this information, please let me know, and I can do that for you.)
-Duration: 23.68 seconds
-
-2023-11-30 21:52:20,224 - Conversation reset
-
-2023-11-30 21:52:46,732 - User input: Tell me two Computer Science classes that are held on both Monday's and Wednesday's
-Response: There are two Computer Science classes that are held on both Monday and Wednesday:
-
-1. COMP 150 - Object-Oriented Programming, held from 12:00 PM to 1:50 PM, in Sierra Hall 1232 with instructor Juan Rios【11†source】.
-  
-2. COMP 350 - Software Engineering, held from 11:00 AM to 11:50 AM, in Sierra Hall 1222 with instructor Jason Isaacs【17†source】.
-Duration: 19.41 seconds
-
-2023-11-30 21:53:55,381 - User input: Tell me what computer science electives will be held online 
-Response: Several Computer Science electives at California State University Channel Islands will be held online:
-
-1. COMP 447 - Societal Issues in Computing, with instructor Christopher Onzol【8†source】.
-   
-2. COMP 449 - Human-Computer Interaction, with instructor Richard Wasniowski【8†source】. Another section of COMP 449 is also offered online with instructor Scott Feister【8†source】.
-
-3. COMP 454 - Automata, Lang & Comput, held on Wednesdays from 7:00 PM to 8:00 PM, with instructor Michael Soltys【8†source】.
-
-Please verify the above options with the current class schedules or through the university's official registration system, as there can be changes or additional electives not listed here.
-Duration: 13.21 seconds
-
-2023-11-30 21:56:03,903 - User input: Use file id: file-hY7pAxWnjRAUWEkf7hysj74F to create schedule for this semester for a Computer Science major, including a mix of computer science classes.
-Response: To create a schedule for a Computer Science major this semester, including a mix of computer science classes that are both in-person and online, I have selected a variety of courses based on the information available in the document. Below is a proposed schedule:
-
-**Monday:**
-- COMP 429, Computer Networks, 4:00 PM - 5:50 PM (Sierra Hall 1131)
-
-**Tuesday:**
-- IT 424, Computer System Security, 12:00 PM - 1:15 PM (Sierra Hall 1131)
-- COMP 162, Computer Arch & Assembly Lang LEC, 8:00 AM - 9:50 AM (Sierra Hall 1232)
-
-**Wednesday:**
-Online Elective(s)
-(Asynchronous, complete assignments during the week at your own pace)
-
-**Thursday:**
-- IT 424, Computer System Security (follow-up to Tuesday's class), 12:00 PM - 1:15 PM (Sierra Hall 1131)
-- IT 429, Computer Networks (Lab), 3:00 PM - 5:50 PM (Sierra Hall 1232)
-
-**Friday:**
-- COMP 162, Computer Arch & Assembly Lang LAB, 8:00 AM - 10:50 AM (Sierra Hall 1232)
-
-**Online Electives (Asynchronous):**
-- COMP 447, Societal Issues in Computing
-- COMP 449, Human-Computer Interaction (multiple sections available)
-- COMP 424, Computer System Security Lab
-
-Since COMP 162, IT 424, and COMP 429 have labs or multiple weekly meetings, they help to provide a full curriculum focused on core computer science and information technology concepts, as well as a practical application in lab sessions. The online electives offer flexibility and allow a student to engage with various important topics in computing such as human-computer interaction, security, and societal issues.
-
-Please note that this is a sample schedule and actual enrollment should be based on individual graduation requirements, prerequisites, and availability at registration. Always consult with an academic advisor to ensure that the selected courses fulfill your specific program requirements.
-Duration: 57.24 seconds
+Keep in mind that you should check the most current CSUCI course schedule or contact the registrar's office to ensure class availability and to get the latest information before enrolling.
+Duration: 67.73 seconds
 
