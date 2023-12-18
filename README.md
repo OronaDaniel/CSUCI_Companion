@@ -31,5 +31,5 @@ flask run
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
 
-* Find more information at our website [Phin](https://phin.cikeys.com/)
+* Find more information and contact information at our website [Phin](https://phin.cikeys.com/)
  
