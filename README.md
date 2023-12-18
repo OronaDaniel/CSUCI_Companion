@@ -25,7 +25,7 @@ Welcome to the CSUCI_Companion, affectionately dubbed Phin, an AI-powered assist
 ### Installation
 Clone the repository and navigate to the project directory.
 To start the application locally:
-flask run 
+```flask run```
 
 ## Built With
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
