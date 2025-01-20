@@ -1,6 +1,6 @@
-# CSUCI_Companion
+# CSUCI Companion *Phin*
 
-Welcome to the CSUCI_Companion, affectionately dubbed Phin, an AI-powered assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
+Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
 
 ## Features
 - **Course Recommendations**: Receive tailored course suggestions to align with your major and academic goals.
