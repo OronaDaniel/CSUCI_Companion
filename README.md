@@ -10,20 +10,17 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 
 ![Home Page](https://github.com/OronaDaniel/CSUCI_Companion/blob/main/images/start_page_smaller.png)
 ![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/76105d1d-260f-4859-bb1e-244f38dd80f4)
-![tailored class schedule example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/29c2c5d9-c6b0-441e-b4d3-a87366804208)
 ![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/30da9365-315a-44c7-b8d9-93b9e3de7667)
-![Phin homepage](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/1e11d239-a354-449e-b6c8-cf00768d8b86)
 
-## Getting Started 
 
-### Installation 💾
+## Installation 💾
 Prerequisites: An Assistant API key from OpenAI.
 Clone this repository and navigate to the project directory.
 To start the application locally:
 
 ```flask run```
 
-### Built With 🛠️
+## Built With 🛠️
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
 * [LangChain](https://www.langchain.com/)
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
