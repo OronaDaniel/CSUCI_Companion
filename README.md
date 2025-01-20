@@ -9,7 +9,7 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 - **Intuitive Interaction**: Engage with Phin through natural language queries to obtain needed information effortlessly.
 
 
-## Examples
+## Example Use Cases 🐬
 ![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/76105d1d-260f-4859-bb1e-244f38dd80f4)
 ![tailored class schedule example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/29c2c5d9-c6b0-441e-b4d3-a87366804208)
 ![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/30da9365-315a-44c7-b8d9-93b9e3de7667)
@@ -17,18 +17,17 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 
 ## Getting Started 
 
-### Prerequisites
-* An Assistant API key from OpenAI.
-
 ### Installation 💾
-Clone the repository and navigate to the project directory.
-
+Prerequisites: An Assistant API key from OpenAI.
+Clone this repository and navigate to the project directory.
 To start the application locally:
+
 ```flask run```
 
-## Built With 🛠️
+### Built With 🛠️
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
-* LangChain
+* [LangChain](https://www.langchain.com/)
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
-* Find more information at our website [Phin](https://phin.cikeys.com/) 
+* Custom Data: CSUCI class, event, and club schedules 
+* Find out more on our website [Phin](https://phin.cikeys.com/) 
  
