@@ -8,22 +8,24 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 - **CSUCI System Integration**: Check course availability and prerequisites within the CSUCI database.
 - **Intuitive Interaction**: Engage with Phin through natural language queries to obtain needed information effortlessly.
 
-![Home Page](https://github.com/OronaDaniel/CSUCI_Companion/blob/main/images/start_page_smaller.png)
-![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/76105d1d-260f-4859-bb1e-244f38dd80f4)
-![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/30da9365-315a-44c7-b8d9-93b9e3de7667)
-
-
-## Installation 💾
-Prerequisites: An Assistant API key from OpenAI.
-Clone this repository and navigate to the project directory.
-To start the application locally:
-
-```flask run```
-
 ## Built With 🛠️
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
 * [LangChain](https://www.langchain.com/)
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
 * Custom Data: CSUCI class, event, and club schedules 
-* Find out more on our website [Phin](https://phin.cikeys.com/) 
+
+![Home Page](https://github.com/OronaDaniel/CSUCI_Companion/blob/main/images/start_page_smaller.png)
+![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/30da9365-315a-44c7-b8d9-93b9e3de7667)
+![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/76105d1d-260f-4859-bb1e-244f38dd80f4)
+
+
+## Installation 💾
+* Prerequisites: An Assistant API key from OpenAI.
+* Clone this repository and navigate to the project directory.
+* To start the application locally:
+
+```flask run```
+
+
+Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
  
