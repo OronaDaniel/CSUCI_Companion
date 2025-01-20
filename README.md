@@ -18,17 +18,17 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 ## Getting Started 
 
 ### Prerequisites
+* An Assistant API key from OpenAI.
 
-- An Assistant API key from OpenAI.
-- CSUCI course data and activty schedules and information.
-
-### Installation
+### Installation 💾
 Clone the repository and navigate to the project directory.
+
 To start the application locally:
 ```flask run```
 
-## Built With
+## Built With 🛠️
 * [Flask](http://flask.palletsprojects.com/) - The web framework used
+* LangChain
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
 * Find more information at our website [Phin](https://phin.cikeys.com/) 
  
