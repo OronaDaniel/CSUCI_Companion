@@ -1,6 +1,10 @@
 secret.py
 __pycache__/
+*.pyc
+.venv/
+.env
 flask_session/
 .DS_Store
 uploads/
 myapp.log*
+.vscode/
