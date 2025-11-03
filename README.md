@@ -14,10 +14,17 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin, an Retrieval-Augment
 * [OpenAI](https://platform.openai.com/docs/assistants/overview) - Assistant API for conversational intelligence, knowledge retrieval, and custom functions
 * Custom Data: CSUCI class, event, and club schedules 
 
-![Home Page](https://github.com/OronaDaniel/CSUCI_Companion/blob/main/images/start_page_smaller.png)
-![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/30da9365-315a-44c7-b8d9-93b9e3de7667)
-![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/assets/89484579/76105d1d-260f-4859-bb1e-244f38dd80f4)
+![Home Page](https://github.com/OronaDaniel/CSUCI_Companion/images/start_page.png)
+![AI electives example prompts](https://github.com/OronaDaniel/CSUCI_Companion/images/AI_electives_example_prompts.png)
+![campus activites example prompt](https://github.com/OronaDaniel/CSUCI_Companion/images/campus_activites_example_prompt.png)
 
+<p align="center">
+  <img src="images/start_page.png" width="720" alt="Home UI">
+</p>
+
+<p align="center">
+  <img src="images/campus_activites_example_prompt.png" width="720" alt="Campus activities query">
+</p>
 
 ## Installation 💾
 * Prerequisites: An Assistant API key from OpenAI.
