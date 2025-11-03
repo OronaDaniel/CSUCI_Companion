@@ -7,7 +7,6 @@
   <a href="#quickstart">
     <img alt="Quickstart" src="https://img.shields.io/badge/Run-Quickstart-informational?style=for-the-badge">
   </a>
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge">
 </p>
 
 Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
@@ -30,7 +29,7 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
 </p>
 
 <p align="center">
-  <img src="images/campus_activities_example_prompt.png" width="720" alt="Campus activities query">
+  <img src="images/campus_activites_example_prompt.png" width="720" alt="Campus activities query">
 </p>
 
 
