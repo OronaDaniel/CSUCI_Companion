@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://phin.cikeys.com/">
-    <img alt="Live Demo" src="https://img.shields.io/badge/Live-Demo-success?style=for-the-badge">
   </a>
   <a href="#quickstart">
     <img alt="Quickstart" src="https://img.shields.io/badge/Run-Quickstart-informational?style=for-the-badge">
@@ -35,15 +34,17 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
 
 ## Architecture
 
+## Architecture
+
 ```mermaid
 flowchart LR
-U[Student] --> A[Flask App]
-A --> R[Retriever]
-R --> V[Vector DB]
-A --> T[Tools: Schedules/Maps/Events]
-A --> L[LLM (OpenAI Assistants)]
-L --> A
-A --> U
+  U[Student] --> A[Flask App]
+  A --> R[Retriever]
+  R --> V[Vector DB]
+  A --> T["Tools: Schedules/Maps/Events"]
+  A --> L["LLM (OpenAI Assistants)"]
+  L --> A
+  A --> U
 ```
 
 ## Built With 🛠️
