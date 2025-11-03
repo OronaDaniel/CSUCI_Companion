@@ -37,13 +37,13 @@ flowchart TB
   U([User]) -->|Query| T[Create/Retrieve Thread]
   T --> P{{Phin}}
 
-  %% General
-  P -->|General Query| LLM[Use GPT-4 Turbo Model]
-
   %% CSUCI-specific retrieval
   P -->|CSUCI Specific| KR[Query CSUCI Data Sources]
   KR --> IDX[Retrieve from CSUCI Knowledge Base]
   IDX --> LLM
+
+  %% General
+  P -->|General Query| LLM[Use GPT-4 Turbo Model]
 
   %% Analytical / code
   P -->|Analytical| CI[Code Interpreter]
@@ -53,17 +53,6 @@ flowchart TB
   %% Output
   LLM --> GEN[Generate / Format Response]
   GEN --> D([Display to User])
-```
-
-```mermaid
-flowchart LR
-  U[Student] --> A[Flask App]
-  A --> R[Retriever]
-  R --> V[Vector DB]
-  A --> T["Tools: Schedules/Maps/Events"]
-  A --> L["LLM (OpenAI Assistants)"]
-  L --> A
-  A --> U
 ```
 
 ## Built With 🛠️
