@@ -24,13 +24,11 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
   <img src="images/start_page.png" width="640" alt="Home UI">
   <br/>
   <!-- Row 2: two images side by side -->
-  <img src="images/AI_electives_example_prompts.png" width="360" alt="Electives assistant">
+  <img src="images/AI_electives_example_prompts.png" width="640" alt="Electives assistant">
   &nbsp;&nbsp;
-  <img src="images/campus_activites_example_prompt.png" width="360" alt="Campus activities query">
+  <img src="images/campus_activites_example_prompt.png" width="640" alt="Campus activities query">
 </p>
 
-
-## Architecture
 
 ## Architecture
 
