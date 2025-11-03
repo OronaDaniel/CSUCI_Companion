@@ -33,6 +33,29 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
 ## Architecture
 
 ```mermaid
+flowchart TB
+  U([User]) -->|Query| T[Create/Retrieve Thread]
+  T --> P{{Phin}}
+
+  %% General
+  P -->|General Query| LLM[Use GPT-4 Turbo Model]
+
+  %% CSUCI-specific retrieval
+  P -->|CSUCI Specific| KR[Query CSUCI Data Sources]
+  KR --> IDX[Retrieve from CSUCI Knowledge Base]
+  IDX --> LLM
+
+  %% Analytical / code
+  P -->|Analytical| CI[Code Interpreter]
+  CI --> SETUP[Setup Environment & Execute Code]
+  SETUP --> LLM
+
+  %% Output
+  LLM --> GEN[Generate / Format Response]
+  GEN --> D([Display to User])
+```
+
+```mermaid
 flowchart LR
   U[Student] --> A[Flask App]
   A --> R[Retriever]
