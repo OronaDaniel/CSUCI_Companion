@@ -26,7 +26,7 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
   <!-- Row 2: two images side by side -->
   <img src="images/AI_electives_example_prompts.png" width="360" alt="Electives assistant">
   &nbsp;&nbsp;
-  <img src="images/campus_activities_example_prompt.png" width="360" alt="Campus activities query">
+  <img src="images/campus_activites_example_prompt.png" width="360" alt="Campus activities query">
 </p>
 
 
