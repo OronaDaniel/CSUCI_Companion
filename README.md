@@ -17,18 +17,16 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
 * **Natural interaction**: conversational Q&A for campus info
 
 
-## UI 
+## Website
 
 <p align="center">
-  <img src="images/start_page.png" width="720" alt="Home UI">
-</p>
-
-<p align="center">
-  <img src="images/AI_electives_example_prompts.png" width="720" alt="Electives Assistant">
-</p>
-
-<p align="center">
-  <img src="images/campus_activites_example_prompt.png" width="720" alt="Campus activities query">
+  <!-- Row 1: single image -->
+  <img src="images/start_page.png" width="640" alt="Home UI">
+  <br/>
+  <!-- Row 2: two images side by side -->
+  <img src="images/AI_electives_example_prompts.png" width="360" alt="Electives assistant">
+  &nbsp;&nbsp;
+  <img src="images/campus_activities_example_prompt.png" width="360" alt="Campus activities query">
 </p>
 
 
@@ -77,7 +75,6 @@ flask --app app run --port 8000
 # visit http://localhost:8000
 ```
 
-```markdown
 ## Environment
 
 | Variable       | Required | Example       | Notes                      |
@@ -85,7 +82,7 @@ flask --app app run --port 8000
 | `OPENAI_API_KEY` |   ✅    | `sk-...`      | API key for LLM            |
 | `ASSISTANT_ID`   |   ✅    | `asst_...`    | OpenAI Assistant to run    |
 | `SECRET_KEY`     |   ⚙️    | random string | Flask session security     |
-```
+
 
 ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
  
