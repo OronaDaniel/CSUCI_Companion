@@ -77,6 +77,15 @@ flask --app app run --port 8000
 # visit http://localhost:8000
 ```
 
+```markdown
+## Environment
 
-Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
+| Variable       | Required | Example       | Notes                      |
+|----------------|:--------:|---------------|----------------------------|
+| `OPENAI_API_KEY` |   ✅    | `sk-...`      | API key for LLM            |
+| `ASSISTANT_ID`   |   ✅    | `asst_...`    | OpenAI Assistant to run    |
+| `SECRET_KEY`     |   ⚙️    | random string | Flask session security     |
+```
+
+ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
  
