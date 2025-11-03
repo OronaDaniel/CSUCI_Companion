@@ -4,7 +4,7 @@
   <a href="https://phin.cikeys.com/">
   </a>
   <a href="#quickstart">
-    <img alt="Quickstart" src="https://img.shields.io/badge/Run-Quickstart-informational?style=for-the-badge">
+    <img alt="Quickstart" src="https://img.shields.io/badge/Quickstart-informational?style=for-the-badge">
   </a>
 </p>
 
@@ -94,5 +94,5 @@ flask --app app run --port 8000
 | `SECRET_KEY`     |   ⚙️    | random string | Flask session security     |
 
 
-ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
+#### ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
  
