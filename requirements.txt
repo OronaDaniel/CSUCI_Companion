@@ -1,0 +1,11 @@
+# Web app
+flask>=3.0
+flask-session>=0.8
+gunicorn>=21.2
+
+# Config
+python-dotenv>=1.0
+
+# OpenAI + tooling
+openai>=1.40.0
+langchain>=0.2
