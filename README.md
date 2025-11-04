@@ -8,7 +8,7 @@
   </a>
 </p>
 
-Welcome to the CSUCI Companion, affectionately dubbed ~dol~Phin, a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
+Welcome to the CSUCI Companion, affectionately dubbed ~Dol~phin, a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
 
 ## Features 🐬
 * **Course recommendations** tailored to your major and goals
