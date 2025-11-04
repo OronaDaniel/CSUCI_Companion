@@ -12,7 +12,7 @@ Welcome to the CSUCI Companion, affectionately dubbed Phin (mascot), a Retrieval
 
 ## Features 🐬
 * **Course recommendations** tailored to your major and goals
-* **Schedule optimization** to balance classes with constraints
+* **Schedule optimization** to balance classes with personal commitments
 * **CSUCI integration** for course availability & prerequisites
 * **Natural interaction**: conversational Q&A for campus info
 
