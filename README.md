@@ -82,7 +82,7 @@ Scrapy + Twisted, exporting structured JSON consumed by the downstream indexing 
 retrieval components of the RAG pipeline.
 
 The crawler is designed to be refreshable each term with minimal changes.
-Sample output schema: `data/samples/sample_ouput.json`.
+Sample output schema: [`data/samples/sample_output.json`](data/samples/sample_output.json).
 See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for more scraper details.
 
 ## Quickstart
