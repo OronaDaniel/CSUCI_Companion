@@ -68,7 +68,6 @@ CSUCI_Companion/
 ├── images/  
 └── README.md                   
 ```
-See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for scraper details.
 
 ## Built With 🛠️
 **Flask** · **LangChain** · **OpenAI Assistants API** · custom CSUCI data (classes, events, clubs)
@@ -77,15 +76,14 @@ See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for scraper
 * OpenAI Assistants — tools/retrieval/functions: https://platform.openai.com/docs/assistants/overview
 
 ### Data Ingestion (Course Catalog Scraper)
-Phin uses a Python Scrapy-based crawler (in `data-ingestion/course-scraper/`) to ingest CSUCI course catalog data and emit structured JSON for indexing.
+Phin uses a Python Scrapy-based crawler to ingest course catalog data.
+The scraper traverses subject and course hierarchies asynchronously using
+Scrapy + Twisted, exporting structured JSON consumed by the downstream indexing and 
+retrieval components of the RAG pipeline.
 
-Run the scraper (from `data-ingestion/course-scraper/`):
-```bash
-pip install -r requirements.txt       # install Scrapy locally for the scraper
-scrapy crawl CourseScrape -a term=spring-2024 -O output.json
-```
-- `term` defaults to `fall-2023` if omitted.
-- Output files (e.g., `output.json`) are gitignored; a small example lives at `data/samples/output_sample.json`.
+The crawler is designed to be refreshable each term with minimal changes.
+Sample output schema: `data/samples/sample_ouput.json`.
+See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for more scraper details.
 
 ## Quickstart
 Prerequisites:

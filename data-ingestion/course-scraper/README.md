@@ -7,14 +7,14 @@ Scrapy-based crawler that ingests Schedule of Classes data by term and emits one
 - Install deps for this scraper: `pip install -r requirements.txt` (Scrapy)
 
 ## How to run
-From this directory:
+From `data-ingestion/course-scraper/`:
 
 ```bash
 scrapy crawl CourseScrape -a term=spring-2024 -O output.json
 ```
 
 - `term` is optional; defaults to `fall-2023` if omitted.
-- `output.json` is gitignored. A small example schema is in `../../data/samples/output_sample.json`.
+- `output.json` is gitignored. A small example schema is in `../../data/samples/sample_output.json`.
 
 ## What it scrapes
 Traverses the schedule-of-classes site (subject → course → section) to extract course names, sections, class numbers, types, days/times, locations, instructors, and units. See `my_university_scraper/spiders/course_scrape.py`.
