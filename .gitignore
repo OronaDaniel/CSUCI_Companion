@@ -1,10 +1,31 @@
 secret.py
+
+# Byte-compiled / caches
 __pycache__/
 *.pyc
-.venv/
-.env
-flask_session/
-.DS_Store
-uploads/
+*.pyo
+*.pyd
+*.egg-info/
+.pylint_cache/
+.pytest_cache/
+*.log
 myapp.log*
+
+# Virtual environments
+.env
+.venv/
+venv/
+env/
+
+# Scrapy artifacts
+.scrapy/
+data-ingestion/course-scraper/.scrapy/
+data-ingestion/course-scraper/output.json
+
+# App/session uploads
+flask_session/
+uploads/
+
+# OS/editor
+.DS_Store
 .vscode/

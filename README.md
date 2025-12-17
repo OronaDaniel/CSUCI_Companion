@@ -8,7 +8,7 @@
   </a>
 </p>
 
-Welcome to the CSUCI Companion, affectionately dubbed ~Dol~phin, a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4.0 turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
+Welcome to the CSUCI Companion, affectionately dubbed ~Dol~phin, a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4 Turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
 
 ## Features 🐬
 * **Course recommendations** tailored to your major and goals
@@ -55,17 +55,43 @@ flowchart TB
   GEN --> D([Display to User])
 ```
 
+## Repository Structure
+```text
+CSUCI_Companion/
+├── app.py                      # Flask app
+├── requirements.txt
+├── data-ingestion/
+│   └── course-scraper/         # Scrapy crawler (Twisted async) → JSON feed
+├── data/
+│   └── samples/                # Sample outputs
+├── static/                     # Frontend assets
+├── images/  
+└── README.md                   
+```
+See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for scraper details.
+
 ## Built With 🛠️
 **Flask** · **LangChain** · **OpenAI Assistants API** · custom CSUCI data (classes, events, clubs)
 * Flask — web framework: https://flask.palletsprojects.com/
 * LangChain — orchestration: https://python.langchain.com/
 * OpenAI Assistants — tools/retrieval/functions: https://platform.openai.com/docs/assistants/overview
 
+### Data Ingestion (Course Catalog Scraper)
+Phin uses a Python Scrapy-based crawler (in `data-ingestion/course-scraper/`) to ingest CSUCI course catalog data and emit structured JSON for indexing.
+
+Run the scraper (from `data-ingestion/course-scraper/`):
+```bash
+pip install -r requirements.txt       # install Scrapy locally for the scraper
+scrapy crawl CourseScrape -a term=spring-2024 -O output.json
+```
+- `term` defaults to `fall-2023` if omitted.
+- Output files (e.g., `output.json`) are gitignored; a small example lives at `data/samples/output_sample.json`.
+
 ## Quickstart
 Prerequisites:
 * Python 3.10+
-* An OpenAI API key
- 
+* An OpenAI API key and Assistant ID
+
 To start the application locally:
 
 ```bash
@@ -76,9 +102,12 @@ source .venv/bin/activate
 # 2) Install libraries
 pip install -r requirements.txt
 
-# 3) Configure your key
-cp .env.example .env
-# edit .env and set: OPENAI_API_KEY=...
+# 3) Add your keys (secret.py is gitignored)
+cat > secret.py <<'PY'
+api_key = "sk-..."
+assistant_id = "asst_..."
+secret_key = "change-me"
+PY
 
 # 4) Run
 flask --app app run --port 8000
@@ -89,9 +118,9 @@ flask --app app run --port 8000
 
 | Variable       | Required | Example       | Notes                      |
 |----------------|:--------:|---------------|----------------------------|
-| `OPENAI_API_KEY` |   ✅    | `sk-...`      | API key for LLM            |
-| `ASSISTANT_ID`   |   ✅    | `asst_...`    | OpenAI Assistant to run    |
-| `SECRET_KEY`     |   ⚙️    | random string | Flask session security     |
+| `api_key` |   ✅    | `sk-...`      | API key for LLM (in `secret.py`)     |
+| `assistant_id`   |   ✅    | `asst_...`    | OpenAI Assistant to run (in `secret.py`)   |
+| `secret_key`     |   ⚙️    | random string | Flask session security (in `secret.py`)    |
 
 
 #### ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 

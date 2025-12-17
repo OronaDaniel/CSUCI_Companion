@@ -1,0 +1,26 @@
+[
+    {
+        "course_name": "COMP 362 - Operating Systems",
+        "session": "1",
+        "section": "01",
+        "class_number": "1234",
+        "type": "LEC",
+        "days": "MW",
+        "time": "10:00 AM - 11:15 AM",
+        "location": "Bell Tower 1402",
+        "instructor": "Jane Doe",
+        "units": "3.00"
+    },
+    {
+        "course_name": "MATH 230 - Logic and Mathematical Reasoning",
+        "session": "1",
+        "section": "03",
+        "class_number": "5678",
+        "type": "LEC",
+        "days": "TTH",
+        "time": "2:00 PM - 3:50 PM",
+        "location": "Sierra Hall 102",
+        "instructor": "John Smith",
+        "units": "3.00"
+    }
+]
