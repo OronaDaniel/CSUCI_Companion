@@ -1,36 +1,39 @@
-# *Phin*: The CSUCI Companion 🎓
+# 🐬 Phin: The CSUCI Companion
+
+> **A Retrieval-Augmented Generation (RAG) Assistant for CSU Channel Islands**
+
+**Phin** is an AI-powered academic assistant designed to help students at **CSUCI** navigate their academic journey. Built on the **OpenAI Assistants API** (GPT-4 Turbo), Phin replaces static keyword searches with natural conversation, offering tailored course recommendations, natural language scheduling, and real-time answers to campus queries.
+
+---
+
+## 📸 Demo
 
 <p align="center">
-  <a href="https://phin.cikeys.com/">
-  </a>
-  <a href="#quickstart">
-    <img alt="Quickstart" src="https://img.shields.io/badge/Quickstart-informational?style=for-the-badge">
-  </a>
+  <img src="images/start_page.png" width="700" alt="Home UI">
 </p>
-
-Welcome to the CSUCI Companion, affectionately dubbed ~Dol~phin, a Retrieval-Augmented Generative AI Assistant built to help students at California State University Channel Islands (CSUCI) seamlessly plan their academic journey. Leveraging the power of OpenAI's Assistant API and GPT-4 Turbo, Phin offers tailored course recommendations, optimized scheduling, and a plethora of academic resources, all accessible through a natural language interface.
-
-## Features 🐬
-* **Course recommendations** tailored to your major and goals
-* **Schedule optimization** to balance classes with personal commitments
-* **CSUCI integration** for course availability & prerequisites
-* **Natural interaction**: conversational Q&A for campus info
-
-
-## Website
 
 <p align="center">
-  <!-- Row 1: single image -->
-  <img src="images/start_page.png" width="640" alt="Home UI">
-  <br/>
-  <!-- Row 2: two images side by side -->
-  <img src="images/AI_electives_example_prompts.png" width="420" alt="Electives assistant">
-  &nbsp;&nbsp;
-  <img src="images/campus_activites_example_prompt.png" width="420" alt="Campus activities query">
+  <img src="images/AI_electives_example_prompts.png" width="45%" alt="Electives assistant">
+  &nbsp; &nbsp;
+  <img src="images/campus_activites_example_prompt.png" width="45%" alt="Campus activities query">
 </p>
 
+<p align="center">
+  <i>Left: Natural Language Course Recs | Right: RAG-based Event Retrieval</i>
+</p>
 
-## Architecture
+---
+
+## 🚀 Key Features
+
+* **🎓 Intelligent Course Recommendations:** Suggests classes based on major, interests, and prerequisites.
+* **🗓️ Natural Language Scheduling:** "Agentic" scheduling that optimizes class times based on personal constraints (e.g., "Keep my Fridays free").
+* **🏫 Real-Time Campus Knowledge:** RAG pipeline integrated with scraping to answer questions about clubs, events, and deadlines.
+* **🔗 Deep Integration:** Custom-built data ingestion pipeline for up-to-date course catalogs and event data.
+
+---
+
+## 🛠️ Architecture
 
 ```mermaid
 flowchart TB
@@ -55,42 +58,41 @@ flowchart TB
   GEN --> D([Display to User])
 ```
 
-## Repository Structure
+**Tech Stack: Flask · LangChain · OpenAI Assistants API · Scrapy · Twisted**
+
+---
+
+## 🕷️ Data Engineering
+
+Unlike generic chatbots, Phin relies on ground-truth data directly from the university. We engineered a custom ETL pipeline to ensure accuracy:
+
+### Course Catalog Scraper
+* **Tooling**: Utilized **Scrapy** for its asynchronous event-driven architecture (Twisted reactor).
+* **Logic**: The crawler systematically traverses the CSUCI course catalog hierarchy (Subjects → Course Details), parsing HTML structures to extract prerequisites, units, and descriptions.
+* **Output**: Exports standardized **JSON feeds** (see `data/samples/sample_output.json`) which are then indexed for retrieval by the RAG system.
+
+*Check the `data-ingestion/course-scraper` directory for the crawler implementation.*
+
+---
+
+## 📂 Repository Structure
 ```text
 CSUCI_Companion/
-├── app.py                      # Flask app
-├── requirements.txt
+├── app.py                      # Flask application entry point
+├── requirements.txt            # Dependencies
 ├── data-ingestion/
-│   └── course-scraper/         # Scrapy crawler (Twisted async) → JSON feed
+│   └── course-scraper/         # Custom Scrapy crawler (Async/Twisted)
 ├── data/
-│   └── samples/                # Sample outputs
-├── static/                     # Frontend assets
-├── images/  
-└── README.md                   
+│   └── samples/                # Sample JSON outputs from scraper
+├── static/                     # CSS/JS assets
+├── images/                     # Documentation images
+└── README.md                 
 ```
 
-## Built With 🛠️
-**Flask** · **LangChain** · **OpenAI Assistants API** · custom CSUCI data (classes, events, clubs)
-* Flask — web framework: https://flask.palletsprojects.com/
-* LangChain — orchestration: https://python.langchain.com/
-* OpenAI Assistants — tools/retrieval/functions: https://platform.openai.com/docs/assistants/overview
+---
 
-### Data Ingestion (Course Catalog Scraper)
-Phin uses a Python Scrapy-based crawler to ingest course catalog data.
-The scraper traverses subject and course hierarchies asynchronously using
-Scrapy + Twisted, exporting structured JSON consumed by the downstream indexing and 
-retrieval components of the RAG pipeline.
-
-The crawler is designed to be refreshable each term with minimal changes.
-Sample output schema: [`data/samples/sample_output.json`](data/samples/sample_output.json).
-See [`data-ingestion/course-scraper`](data-ingestion/course-scraper) for more scraper details.
-
-## Quickstart
-Prerequisites:
-* Python 3.10+
-* An OpenAI API key and Assistant ID
-
-To start the application locally:
+## ⚡ Quickstart
+**Prerequisites**: Python 3.10+, OpenAI API Key, and Assistant ID.
 
 ```bash
 # 1) Create & activate a virtual env
@@ -107,19 +109,21 @@ assistant_id = "asst_..."
 secret_key = "change-me"
 PY
 
-# 4) Run
+# 4) Run the app
 flask --app app run --port 8000
 # visit http://localhost:8000
 ```
 
-## Environment
+#### Environment Variables (secret.py)
 
-| Variable       | Required | Example       | Notes                      |
-|----------------|:--------:|---------------|----------------------------|
-| `api_key` |   ✅    | `sk-...`      | API key for LLM (in `secret.py`)     |
-| `assistant_id`   |   ✅    | `asst_...`    | OpenAI Assistant to run (in `secret.py`)   |
-| `secret_key`     |   ⚙️    | random string | Flask session security (in `secret.py`)    |
+| Variable | Required | Description |
+|------|:--------|----------------|
+| `api_key` | ✅ |OpenAI API Key |
+| `assistant_id` | ✅ | OpenAI Assistant ID to run |
+| `secret_key` | ⚙️ | Flask session security string |
 
+---
 
-#### ℹ️ Find out more about the development of this application on our [website](https://phin.cikeys.com/) 
+#### ℹ️ Project Origin
+*Developed as a Computer Science Capstone at CSU Channel Islands.*
  
